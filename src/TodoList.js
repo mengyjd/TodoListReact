@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
+import Axios from 'axios'
 import './style.css'
 
 class TodoList extends Component {
@@ -13,6 +14,17 @@ class TodoList extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleBtnClick = this.handleBtnClick.bind(this)
     this.handleDeleteClick = this.handleDeleteClick.bind(this)
+  }
+
+  componentDidMount() {
+    const link = "http://120.77.207.213:7300/mock/5fbbb329ba85b50020b05457/rtd"
+    Axios.get(link + "/api/todolist").then((result) => {
+      this.setState(() => ({
+        list: [...result.data.data]
+      }))
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   render() {
@@ -55,6 +67,9 @@ class TodoList extends Component {
   }
 
   handleBtnClick() {
+    if(!this.state.inputValue) {
+      return
+    }
     this.setState((prevState) => ({
       list: [...prevState.list, prevState.inputValue],
       inputValue: ''
@@ -70,6 +85,8 @@ class TodoList extends Component {
       }
     })
   }
+
+  
 }
 
 export default TodoList
