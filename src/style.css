@@ -1,6 +1,11 @@
-.input {
-  border: 1px solid red;
+.todolist {
+  margin: 10px;
 }
-.todo-item {
-  cursor: pointer;
+
+.btn {
+  margin-left: 10px;
+}
+
+.list-wrapper {
+  margin-top: 10px;
 }
