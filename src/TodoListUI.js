@@ -3,7 +3,7 @@
  * @Author: 高锐
  * @Date: 2020-11-30 10:49:36
  * @LastEditors: 高锐
- * @LastEditTime: 2020-11-30 11:15:53
+ * @LastEditTime: 2020-12-04 19:19:27
  */
 import React from 'react';
 import { Input, Button, List } from 'antd'
@@ -30,7 +30,7 @@ const TodoListUI = (props) => {
           bordered
           dataSource={props.list}
           renderItem={(item, index) => (
-            <List.Item onClick={(index) => { props.handleDeleteItem(index) }}>
+            <List.Item onClick={() => { props.handleDeleteItem(index) }}>
               {item}
             </List.Item>
           )}
