@@ -3,16 +3,16 @@
  * @Author: 高锐
  * @Date: 2020-11-30 09:54:47
  * @LastEditors: 高锐
- * @LastEditTime: 2020-12-04 19:18:30
+ * @LastEditTime: 2020-12-05 15:57:36
  */
 import {
   CHANG_INPUT_VALUE,
   CLEAR_INPUT_VALUE,
   DELETE_TODO_ITEM,
   ADD_TODO_ITEM,
-  INIT_LIST_ACTION
+  INIT_LIST_ACTION,
+  GET_INIT_LIST
 } from './actionTypes'
-import axios from 'axios'
 
 export const getChangeInputAction = (value) => ({
   type: CHANG_INPUT_VALUE,
@@ -37,14 +37,6 @@ export const initListAction = (data) => ({
   data
 })
 
-export const getTodoListAction = () => {
-  return (dispatch, test) => {
-    const baseUrl = 'http://120.77.207.213:7300/mock/5fbbb329ba85b50020b05457/rtd'
-    axios.get(`${baseUrl}/api/todolist`)
-    .then(res => {
-      const data = res.data.data
-      const action = initListAction(data)
-      dispatch(action)
-    })
-  }
-}
+export const getInitList = () => ({
+  type: GET_INIT_LIST
+})

@@ -9,9 +9,10 @@ import {
   getAddTodoItemAction,
   getClearInputAction,
   getDeleteTodoItemAction,
-  getTodoListAction
+  getInitList
 } from './store/actionCreator'
 import TodoListUI from './TodoListUI'
+// import axios from 'axios'
 
 class TodoList extends Component {
 
@@ -28,8 +29,16 @@ class TodoList extends Component {
   componentDidMount() {
     store.subscribe(this.handleStoreChange)
 
-    const action = getTodoListAction()
+    const action = getInitList()
     store.dispatch(action)
+
+    // const baseUrl = 'http://120.77.207.213:7300/mock/5fbbb329ba85b50020b05457/rtd'
+    // axios.get(`${baseUrl}/api/todolist`)
+    // .then(res => {
+    //   const data = res.data.data
+    //   const action = initListAction(data)
+    //   store.dispatch(action)
+    // })
   }
 
   handleInputChange(e) {
